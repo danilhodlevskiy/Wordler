@@ -21,6 +21,9 @@ struct WordsView: View {
     @State private var isStart = true
     @State private var isEmptyArray = false
     
+    @State private var offsetX: CGFloat = 0
+    @State private var opacity: CGFloat = 1
+    
     var body: some View {
         VStack(spacing: -5) {
             
@@ -45,36 +48,35 @@ struct WordsView: View {
 
             
             Spacer()
-            
-            VStack(alignment: .leading, spacing: -5) {
-                Text(isAllWords || isStart ? "" : "\(shuffledWordItems.count)")
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.init(hex: 0xb6b6b6))
-                VStack(alignment: .center) {
-                    Text("\(isStart ? "Let's go🏁" : isAllWords ? "That is all🎉" : word.mainWord)")
-                        .font(.system(size: 48, weight: .bold))
-                }
-
-            }
-            
-            Rectangle()
-                .opacity(0)
-                .frame(height: 15)
-            
-            ZStack {
-                Text("\(word.wordTranslate)")
-                    .font(.system(size: 32, weight: .light))
-                    .opacity(showTranslation ? isAllWords ? 0 : 100 : 0)
-                
-                TranslateButton(text: "Translate")
-                    .opacity(showTranslation ? 0 : isAllWords || isStart ? 0 : 100)
-                    .onTapGesture {
-                        withAnimation {
-                            showTranslation = true
-                        }
+            VStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: -5) {
+                    Text(isAllWords || isStart ? "" : "EN")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundColor(.init(hex: 0xb6b6b6))
+                    VStack(alignment: .center) {
+                        Text("\(isStart ? "Let's go🏁" : isAllWords ? "That is all🎉" : word.mainWord)")
+                            .font(.system(size: 48, weight: .bold))
                     }
+
+                }
+                
+                ZStack {
+                    Text("\(word.wordTranslate)")
+                        .font(.system(size: 32, weight: .light))
+                        .opacity(showTranslation ? isAllWords ? 0 : 100 : 0)
                     
+                    Button {
+                        showTranslation = true
+                    } label: {
+                        TranslateButton(text: "Translate")
+                            .opacity(showTranslation ? 0 : isAllWords || isStart ? 0 : 100)
+                    }
+                        
+                }
             }
+            .opacity(opacity)
+            .offset(x: offsetX)
+
             
             
             Spacer()
@@ -85,16 +87,34 @@ struct WordsView: View {
                     if wordItems.filter({ word in
                         word.category == category
                     }).count != 0 {
-                        isStart = false
-                        if category != "" {
-                            shuffledWordItems = wordItems.filter({ word in
-                                word.category == category
-                            }).shuffled()
-                            word = shuffledWordItems[index]
-                        } else {
-                            shuffledWordItems = wordItems.shuffled()
-                            word = shuffledWordItems[index]
+                        
+                        withAnimation {
+                            offsetX = -50
+                            opacity = 0
+
                         }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                            isStart = false
+                            if category != "" {
+                                shuffledWordItems = wordItems.filter({ word in
+                                    word.category == category
+                                }).shuffled()
+                                word = shuffledWordItems[index]
+                            } else {
+                                shuffledWordItems = wordItems.shuffled()
+                                word = shuffledWordItems[index]
+                            }
+                            
+                            offsetX = 50
+                            
+                            withAnimation {
+                                offsetX = 0
+                                opacity = 1
+                            }
+                        }
+                        
+
                     } else {
                         isEmptyArray = true
                     }
@@ -104,14 +124,27 @@ struct WordsView: View {
                 } else {
                     if !isAllWords {
                         withAnimation {
+                            offsetX = -50
+                            opacity = 0
+
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                             next()
                             showTranslation = false
+                            offsetX = 50
+                            
+                            withAnimation {
+                                offsetX = 0
+                                opacity = 1
+                            }
                         }
+                        
                     } else {
+                        
                         if wordItems.filter({ word in
                             word.category == category
                         }).count != 0 {
-                            if category != "All" || category != "" {
+                            if category != "" {
                                 index = 0
                                 isAllWords = false
                                 shuffledWordItems = wordItems.filter({ word in

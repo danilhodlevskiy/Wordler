@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		971D397C2A41B226005E586B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 971D397E2A41B226005E586B /* Localizable.strings */; };
 		971D42CB2A3EF82F00B85B54 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 971D42CA2A3EF82F00B85B54 /* Realm */; };
 		971D42CD2A3EF82F00B85B54 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 971D42CC2A3EF82F00B85B54 /* RealmSwift */; };
 		971D42D02A3EF85100B85B54 /* WordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971D42CF2A3EF85100B85B54 /* WordItem.swift */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		971D397D2A41B226005E586B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		971D397F2A41B22A005E586B /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		971D42CF2A3EF85100B85B54 /* WordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordItem.swift; sourceTree = "<group>"; };
 		971D42D12A3F04EB00B85B54 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		971D42D32A3F08F600B85B54 /* LinkShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkShowView.swift; sourceTree = "<group>"; };
@@ -107,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		971D39792A41B0C6005E586B /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				971D397E2A41B226005E586B /* Localizable.strings */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
 		971D42CE2A3EF83E00B85B54 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +151,7 @@
 		973410D32A3DE4BA0019919B /* Wordler */ = {
 			isa = PBXGroup;
 			children = (
+				971D39792A41B0C6005E586B /* Localizations */,
 				971D42CE2A3EF83E00B85B54 /* Model */,
 				973410FF2A3DE61A0019919B /* Extensions */,
 				9734110C2A3E086F0019919B /* ViewModel */,
@@ -300,6 +312,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				uk,
 				Base,
 			);
 			mainGroup = 973410C82A3DE4BA0019919B;
@@ -323,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				973410DC2A3DE4BD0019919B /* Preview Assets.xcassets in Resources */,
+				971D397C2A41B226005E586B /* Localizable.strings in Resources */,
 				973410D92A3DE4BD0019919B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +414,18 @@
 			targetProxy = 973410EC2A3DE4BE0019919B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		971D397E2A41B226005E586B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				971D397D2A41B226005E586B /* en */,
+				971D397F2A41B22A005E586B /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		973410F32A3DE4BE0019919B /* Debug */ = {

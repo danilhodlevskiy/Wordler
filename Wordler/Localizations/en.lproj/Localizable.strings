@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Wordler
+
+  Created by danilka on 20.06.2023.
+  
+*/
+
+"List" = "List";
+"Words" = "Words";
+"Links" = "Links";
+
+"Search" = "Search";
+
+"New word" = "New word";
+"Empty" = "Empty";
+"Word" = "Word";
+"Translation" = "Translation";
+"Note" = "Note";
+"Save" = "Save";
+
+"All" = "All";
+"Let's go🏁" = "Let's go🏁";
+"Start" = "Start";
+"Translate" = "Translate";
+"Next" = "Next";
+"That is all" = "That is all";
+"Restart" = "Reastart";
+
+"New link" = "New link";
+"Title" = "Title";
+"Link" = "Link";
+
+"New category" = "New category";

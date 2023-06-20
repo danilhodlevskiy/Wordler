@@ -21,6 +21,9 @@ struct AddNewWordView: View {
     @State private var showAlert = false
     @EnvironmentObject var listViewModel: ListViewModel
     
+    var wordTitle = "Word"
+    var titleTitle = "Translation"
+    
     @ObservedResults(WordItem.self) var wordItems
     @ObservedResults(CategoryItem.self) var categoryItems
     
@@ -71,8 +74,8 @@ struct AddNewWordView: View {
             }
             
             VStack(spacing: 15) {
-                TextFieldView(text: $word, icon: "", title: "Word")
-                TextFieldView(text: $translation, icon: "", title: "Translation")
+                TextFieldView(text: $word, icon: "", title: wordTitle)
+                TextFieldView(text: $translation, icon: "", title: titleTitle)
             }
             
             VStack(alignment: .leading, spacing: 5) {
